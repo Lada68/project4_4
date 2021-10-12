@@ -16,8 +16,9 @@ import java.util.Optional;
 
 @Component
 public abstract class ReadWriteDaoImpl<T, ID> implements ReadWriteDao<T, ID> {
+
     @PersistenceContext
-    private EntityManager em;
+    protected EntityManager em;
     private final String ID_MESSAGE = "id";
     private final String ENTITY_MESSAGE = "entity";
     private final String NULL_MESSAGE = " parameters should not be null!";
