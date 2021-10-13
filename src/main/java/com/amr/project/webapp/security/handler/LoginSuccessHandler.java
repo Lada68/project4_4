@@ -24,7 +24,7 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
         httpServletResponse.sendRedirect(
                 roles.contains("ADMIN")
                         ? "/admin"
-                        : "/main"
+                        : "/"
         );
     }
 }
