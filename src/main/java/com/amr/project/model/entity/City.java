@@ -19,7 +19,6 @@ public class City {
     private Long id;
     private String name;
 
-
     @ManyToOne
     @JoinColumn(name = "country_id")
     @JsonIgnore
@@ -29,6 +28,4 @@ public class City {
         this.name = name;
         this.country = country;
     }
-
-
 }

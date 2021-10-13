@@ -18,6 +18,7 @@ import java.util.List;
 @NoArgsConstructor
 @Table(name = "Item")
 public class Item {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -34,7 +35,11 @@ public class Item {
     @OneToMany(mappedBy = "item",
             cascade = CascadeType.PERSIST)
     @ToString.Exclude
-    private List<Image> images; // вернусь в конце
+    private List<Image> images;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "image_id", referencedColumnName = "id")
+    private Image logo;
 
     @OneToMany(mappedBy = "item",
             cascade = CascadeType.PERSIST)
@@ -59,10 +64,12 @@ public class Item {
     private String moderatedRejectReason;
     private boolean isPretendentToBeDeleted;
 
-    public Item(String name, BigDecimal price,String description, Shop shop) {
+    public Item(String name, BigDecimal price, String description, Shop shop, Double rating, Image logo) {
         this.name = name;
         this.price = price;
         this.description = description;
         this.shop = shop;
+        this.rating = rating;
+        this.logo = logo;
     }
 }

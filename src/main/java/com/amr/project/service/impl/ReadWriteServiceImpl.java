@@ -15,6 +15,8 @@ public abstract class ReadWriteServiceImpl<T, ID> implements ReadWriteService<T,
         this.readWriteDao = readWriteDao;
     }
 
+
+
     @Override
     @Transactional
     public void persist(T entity) {

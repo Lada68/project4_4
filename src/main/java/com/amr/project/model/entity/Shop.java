@@ -65,11 +65,14 @@ public class Shop {
     private boolean isPretendentToBeDeleted = false;
 
 
-    public Shop(String name, String email, String phone, String description, Country location) {
+    public Shop(String name, String email, String phone, String description, Country location,
+                double rating, Image logo) {
         this.name = name;
         this.email = email;
         this.phone = phone;
         this.description = description;
         this.location = location;
+        this.rating = rating;
+        this.logo = logo;
     }
 }
