@@ -1,10 +1,8 @@
 package com.amr.project;
 
 import com.amr.project.dao.abstracts.*;
-import com.amr.project.model.dto.CityDto;
 import com.amr.project.model.entity.*;
 import com.amr.project.model.enums.Gender;
-import com.amr.project.service.impl.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -80,6 +78,10 @@ public class DatabaseInitializer {
             item.getImages().forEach(imageDao::persist);
             itemDao.persist(item);
         });
+
+        Optional<Item> item = itemDao.getByKey(Item.class, 1L);
+        System.out.println();
+
     }
 
     private Set<Role> getRoles() {

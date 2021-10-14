@@ -9,5 +9,5 @@ public class ShopMainPageDTO {
     private Long id;
     private String name;
     private String description;
-    private ImageMainPageDto logo;
+    private ImageDto logo;
 }
