@@ -12,7 +12,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-    
     private final UserDetailsService userDetailsService;
     private final LoginSuccessHandler loginSuccessHandler;
     
@@ -23,7 +22,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        
         auth
                 .userDetailsService(userDetailsService)
                 .passwordEncoder(passwordEncoder())
@@ -32,8 +30,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        
         http
+                .csrf().disable()
+                .cors()
+                
+                .and()
                 .authorizeRequests()
                 .antMatchers("/").permitAll()
                 .antMatchers("/profile/**").hasAnyAuthority("USER", "ADMIN")
@@ -53,10 +54,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutSuccessUrl("/")
                 
                 .and()
-                .rememberMe()
-                
-                .and()
-                .csrf().disable();
+                .rememberMe();
     }
     
     @Bean
