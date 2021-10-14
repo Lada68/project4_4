@@ -1,7 +1,10 @@
 package com.amr.project.model.dto;
 
+import org.mapstruct.Mapper;
+
 import java.math.BigDecimal;
 import java.util.List;
+
 
 public class ItemDto {
     private Long id;

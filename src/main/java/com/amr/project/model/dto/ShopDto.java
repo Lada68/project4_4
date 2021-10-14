@@ -2,6 +2,7 @@ package com.amr.project.model.dto;
 
 import java.util.List;
 
+
 public class ShopDto {
     private Long id;
     private String name;
