@@ -29,9 +29,10 @@ public class ShowMainPageServiceImpl implements ShowMainPageService {
 
     @Override
     public ShowMainPageDTO show() {
-        return new ShowMainPageDTO(mainPageShowConverter.shopListToListShopMainPageDTO(shopMainPageDao.findPopularShops()),
+        return new ShowMainPageDTO(
+                mainPageShowConverter.shopListToListShopMainPageDTO(shopMainPageDao.findPopularShops()),
                 mainPageShowConverter.itemListToListItemMainPageDTO(itemMainPageDao.findPopularItems()),
-                mainPageShowConverter.categoryListToListCategoryMainPageDTO(categoryDao.getAll(Category.class)));
-
+                mainPageShowConverter.categoryListToListCategoryMainPageDTO(categoryDao.getAll(Category.class))
+        );
     }
 }

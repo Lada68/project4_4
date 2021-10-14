@@ -17,9 +17,9 @@ public class MainPageController {
         this.showMainPageService = showMainPageService;
     }
 
-    @GetMapping("/mainpage")
+    @GetMapping
     public String showMainPage(Model model) {
         model.addAttribute("mainPageDto", showMainPageService.show());
-        return null;
+        return "index";
     }
 }
