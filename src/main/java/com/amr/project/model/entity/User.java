@@ -1,17 +1,20 @@
 package com.amr.project.model.entity;
 
-
 import com.amr.project.model.enums.Gender;
+import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Calendar;
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
+import javax.persistence.*;
+import java.util.*;
 
+@Data
+@Entity
+@Table(name = "users")
 public class User implements UserDetails {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String email;
     private String username;
@@ -22,18 +25,60 @@ public class User implements UserDetails {
     private String firstName;
     private String lastName;
     private int age;
-    private Address address;
+
+    @ManyToMany
+    @JoinTable(
+            name = "users_addresses",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "address_id")
+    )
+    private List<Address> address;
+
+    @ManyToMany
+    @JoinTable(
+            name = "users_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
     private Set<Role> roles;
+
     private Gender gender;
     private Calendar birthday;
-    private Image images;
+
+    @OneToMany
+    private List<Image> images;
+
+    @OneToMany
     private List<Coupon> coupons;
+
+    @OneToMany(mappedBy = "user")
     private List<CartItem> cart;
+
+    @OneToMany(mappedBy = "user")
     private List<Order> orders;
+
+    @OneToMany(mappedBy = "user")
     private List<Review> reviews;
+
+    @OneToMany(mappedBy = "user")
     private List<Shop> shops;
-    private Favorite favorite;
+
+    @OneToMany(mappedBy = "user")
     private List<Discount> discounts;
+
+    public void addAddress(Address address) {
+        if (this.address == null) {
+            this.address = new ArrayList<>();
+        }
+        this.address.add(address);
+    }
+
+    public void addRole(Role role) {
+        if (this.roles == null) {
+            this.roles = new HashSet<>();
+        }
+        this.roles.add(role);
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -42,12 +87,12 @@ public class User implements UserDetails {
 
     @Override
     public String getPassword() {
-        return null;
+        return password;
     }
 
     @Override
     public String getUsername() {
-        return null;
+        return username;
     }
 
     @Override
