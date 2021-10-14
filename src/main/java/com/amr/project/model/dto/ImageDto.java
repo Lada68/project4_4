@@ -1,5 +1,6 @@
 package com.amr.project.model.dto;
 
+import com.amr.project.util.ImgUtil;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,5 +11,4 @@ import lombok.NoArgsConstructor;
 public class ImageDto {
     private Long id;
     private byte[] picture;
-
 }

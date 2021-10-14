@@ -1,78 +1,53 @@
 package com.amr.project.model.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.Data;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Data
 @Entity
-@Getter
-@Setter
-@ToString
-@NoArgsConstructor
+@Table(name = "shops")
 public class Shop {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String name;
-
     private String email;
-
     private String phone;
 
+    @Column(columnDefinition = "text")
     private String description;
 
-    @ManyToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "country_id")
     private Country location;
 
-    @OneToMany(mappedBy = "shop",
-            cascade = CascadeType.PERSIST)
-    @ToString.Exclude
+    @OneToMany(mappedBy = "shop")
     private List<Item> items = new ArrayList<>();
 
-    @OneToMany(mappedBy = "shop",
-            cascade = CascadeType.PERSIST)
-    @ToString.Exclude
+    @OneToMany(mappedBy = "shop")
     private List<Review> reviews;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "image_id", referencedColumnName = "id")
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "logo_id")
     private Image logo;
 
     private int count;
-
     private double rating;
 
-    @Transient
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToMany(mappedBy = "shop",
-            cascade = CascadeType.PERSIST)
-    @ToString.Exclude
+    @OneToMany(mappedBy = "shop")
     private List<Discount> discounts;
 
     private boolean isModerated;
     private boolean isModerateAccept;
     private String moderatedRejectReason;
-    private boolean isPretendentToBeDeleted = false;
+    private boolean isPretendedToBeDeleted = false;
 
-
-    public Shop(String name, String email, String phone, String description, Country location,
-                double rating, Image logo) {
-        this.name = name;
-        this.email = email;
-        this.phone = phone;
-        this.description = description;
-        this.location = location;
-        this.rating = rating;
-        this.logo = logo;
-    }
 }

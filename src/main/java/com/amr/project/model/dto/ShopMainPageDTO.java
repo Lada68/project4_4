@@ -6,6 +6,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ShopMainPageDTO {
+    private Long id;
     private String name;
     private String description;
     private ImageMainPageDto logo;

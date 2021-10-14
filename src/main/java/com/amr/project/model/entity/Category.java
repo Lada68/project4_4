@@ -1,32 +1,32 @@
 package com.amr.project.model.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.Data;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
+@Data
 @Entity
-@Getter
-@Setter
-@ToString
-@NoArgsConstructor
-@Table(name = "Category")
+@Table(name = "categories")
 public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    @JsonIgnore
-    @ManyToMany(mappedBy = "categories", fetch = FetchType.EAGER)
-    private List<Item> items = new ArrayList<>();
+
+    @ManyToMany
+    @JoinTable(
+            name = "categories_items",
+            joinColumns = @JoinColumn(name = "category_id"),
+            inverseJoinColumns = @JoinColumn(name = "item_id")
+    )
+    private List<Item> items;
 
     public Category(String name) {
         this.name = name;
+    }
+
+    public Category() {
     }
 }

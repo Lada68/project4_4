@@ -8,6 +8,7 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ItemMainPageDTO {
+    private Long id;
     private String name;
     private BigDecimal price;
     private String description;

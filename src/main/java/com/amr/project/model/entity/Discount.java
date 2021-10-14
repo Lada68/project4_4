@@ -1,35 +1,27 @@
 package com.amr.project.model.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.Data;
 
 import javax.persistence.*;
 
+@Data
 @Entity
-@Getter
-@Setter
-@ToString
-@NoArgsConstructor
+@Table(name = "disconts")
 public class Discount {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Integer minOrder;
     private Integer percentage;
     private Integer fixedDiscount;
-    @ManyToOne
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "shop_id")
-    @JsonIgnore
     private Shop shop;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
     private User user;
 
-    public Discount(Integer minOrder, Integer percentage, Integer fixedDiscount, Shop shop) {
-        this.minOrder = minOrder;
-        this.percentage = percentage;
-        this.fixedDiscount = fixedDiscount;
-        this.shop = shop;
-    }
 }

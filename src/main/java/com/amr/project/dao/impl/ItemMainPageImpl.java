@@ -13,7 +13,7 @@ public class ItemMainPageImpl extends ReadWriteDaoImpl<Item, Long> implements It
     @Override
     public List<Item> findPopularItems() {
         return em.createQuery("Select u from Item u order by u.rating DESC", Item.class)
-                .setMaxResults(5)
+                .setMaxResults(4)
                 .getResultList();
     }
 }

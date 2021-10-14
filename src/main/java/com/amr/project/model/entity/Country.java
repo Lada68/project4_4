@@ -1,18 +1,13 @@
 package com.amr.project.model.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.*;
+import lombok.Data;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.Objects;
 
+@Data
 @Entity
-@Getter
-@Setter
-@ToString
-@NoArgsConstructor
-@Table(name = "Country")
+@Table(name = "countries")
 public class Country {
 
     @Id
@@ -20,14 +15,16 @@ public class Country {
     private Long id;
     private String name;
 
-    @ToString.Exclude
-    @OneToMany(mappedBy = "country",
-            cascade = CascadeType.PERSIST)
+    @OneToMany(
+            mappedBy = "country",
+            cascade = {CascadeType.REFRESH, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REMOVE}
+    )
     private List<City> cities;
 
     public Country(String name) {
         this.name = name;
     }
 
-
+    public Country() {
+    }
 }

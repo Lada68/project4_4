@@ -1,27 +1,22 @@
 package com.amr.project.model.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.*;
+import lombok.Data;
 
 import javax.persistence.*;
-import java.util.Objects;
 
-
+@Data
 @Entity
-@Getter
-@Setter
-@ToString
-@NoArgsConstructor
+@Table(name = "cities")
 public class City {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "country_id")
-    @JsonIgnore
     private Country country;
 
     public City(String name, Country country) {

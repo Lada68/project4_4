@@ -1,19 +1,13 @@
 package com.amr.project.model.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.Data;
 
 import javax.persistence.*;
 import java.util.Date;
 
+@Data
 @Entity
-@Getter
-@Setter
-@ToString
-@NoArgsConstructor
+@Table(name = "reviews")
 public class Review {
 
     @Id
@@ -24,34 +18,20 @@ public class Review {
     private String text;
     private Date date;
     private Integer rating;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
     private User user;
-    @ManyToOne
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "shop_id")
-    @JsonIgnore
     private Shop shop;
-    @ManyToOne
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "item_id")
-    @JsonIgnore
     private Item item;
+
     private boolean isModerated;
     private boolean isModerateAccept;
     private String moderatedRejectReason;
-
-    public Review(String dignity, String flaw, String text, Date date, Integer rating, Item item) {
-        this.dignity = dignity;
-        this.flaw = flaw;
-        this.text = text;
-        this.date = date;
-        this.rating = rating;
-        this.item = item;
-    }
-
-    public Review(String dignity, String flaw, String text, Date date, Integer rating, Shop shop) {
-        this.dignity = dignity;
-        this.flaw = flaw;
-        this.text = text;
-        this.date = date;
-        this.rating = rating;
-        this.shop = shop;
-    }
 }

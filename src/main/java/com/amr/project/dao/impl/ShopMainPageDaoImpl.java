@@ -12,7 +12,7 @@ public class ShopMainPageDaoImpl extends ReadWriteDaoImpl<Shop, Long> implements
     @Override
     public List<Shop> findPopularShops() {
         return em.createQuery("Select u from Shop u order by u.rating DESC", Shop.class)
-                .setMaxResults(5)
+                .setMaxResults(6)
                 .getResultList();
     }
 }
