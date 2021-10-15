@@ -67,7 +67,7 @@
     <div class="card-deck row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-6">
       <div th:each="shop: ${mainPageDto.getPopularShop()}">
         <div class="gcard">
-          <div class="d-flex justify-content-center"><img th:src="@{/img/shops/mvideo.png}" class="card-img-top" alt="..."></div>
+          <div class="d-flex justify-content-center"><img th:src="${shop.getLogo().toBase64()}" class="card-img-top" alt="..."></div>
           <div class="card-body">
             <h5 class="card-title" th:text="${shop.getName()}">NAME</h5>
             <p class="card-text" th:text="${shop.getDescription()}">DESCRIPTION</p>
