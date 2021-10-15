@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Data
 @Entity
 @Table(name = "images")
-public class Image extends ImgUtil {
+public class Image {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,7 +22,7 @@ public class Image extends ImgUtil {
 
     public Image(String url) {
         this.url = url;
-        this.picture = toByteArray(url);
+        this.picture = ImgUtil.toByteArr(url);
     }
 
     public Image() {

@@ -4,14 +4,14 @@ import java.util.Base64;
 
 import java.io.*;
 
-public class ImgUtil {
+public final class ImgUtil {
 
     /**
-     * Convert file to byte array
-     * @param url – file path
-     * @return byte array
+     * Convert a file to a byte array
+     * @param url a picture file path, for example "src/static/img/name.jpg"
+     * @return a byte array
      */
-    public static byte[] toByteArray(String url) {
+    public static byte[] toByteArr(String url) {
         
         try(BufferedInputStream bufferedInputStream = new BufferedInputStream(new FileInputStream(url));
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream()) {
@@ -30,12 +30,15 @@ public class ImgUtil {
     }
 
     /**
-     * Convert byte array to base24 image format
-     * @param byteArr – byte array
-     * @return base24 string
+     * Build a picture of base64 string format
+     * @param url a picture file path, for example "src/static/img/name.jpg"
+     * @param picture a byte array
+     * @return a base64 format picture
      */
-    public static String byteArrToBase24(byte[] byteArr) {
-        return Base64.getEncoder().encodeToString(byteArr);
+    public static String toBase64img(String url, byte[] picture) {
+        return new StringBuilder("data:image/")
+                .append(url.substring(url.lastIndexOf(".") + 1)).append(";base64,")
+                .append(Base64.getEncoder().encodeToString(picture)).toString();
     }
 
 }
