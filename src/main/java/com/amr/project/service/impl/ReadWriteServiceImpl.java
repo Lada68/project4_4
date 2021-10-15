@@ -1,6 +1,7 @@
 package com.amr.project.service.impl;
 
 
+import com.amr.project.dao.abstracts.ReadWriteDao;
 import com.amr.project.service.abstracts.ReadWriteService;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -9,9 +10,9 @@ import java.util.Optional;
 
 public abstract class ReadWriteServiceImpl<T, ID> implements ReadWriteService<T, ID> {
 
-    private final ReadWriteService<T, ID> readWriteDao;
+    private final ReadWriteDao<T, ID> readWriteDao;
 
-    private ReadWriteServiceImpl(ReadWriteService<T, ID> readWriteDao) {
+    protected ReadWriteServiceImpl(ReadWriteDao<T, ID> readWriteDao) {
         this.readWriteDao = readWriteDao;
     }
 

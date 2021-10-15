@@ -1,8 +1,14 @@
 package com.amr.project.model.dto;
 
+import lombok.*;
+
 import java.util.List;
 
-
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 public class ShopDto {
     private Long id;
     private String name;
