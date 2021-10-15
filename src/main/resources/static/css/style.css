@@ -1,0 +1,44 @@
+.market-list {
+    margin-top: 50px;
+    min-width: 300px;
+    width: 100%;
+}
+
+.market-info {
+    display: block;
+    position: relative;
+    margin-top: 100px;
+    max-width: 300px;
+}
+
+.market-list h3 {
+    text-align: center;
+    margin: auto;
+}
+
+.market-info-head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.market-info-head-elem {
+    margin-top: 1em;
+}
+
+#market-logo {
+    width: 70%;
+    margin: auto;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.market-info-head hr {
+    border: 1px solid black;
+    width: 90%;
+}
+
+#market-info-data td {
+    padding: 10px;
+}

@@ -205,14 +205,14 @@ public class DatabaseInitializer {
         String path = "src/main/resources/static/img/shops/";
 
         List<Shop> shops = new ArrayList<>();
-        shops.add(getShop("M-Group", "Мебель для дома и сада", path + "mgroup.png"));
-        shops.add(getShop("Vesco", "Элитная загородная, городская и коммерческая недвижимость", path + "vesco.png"));
-        shops.add(getShop("BigTV", "Проверенная временем цифровые устройства", path + "bigtv.webp"));
-        shops.add(getShop("MskServer", "Постройте свой бизнес без переплат", path + "mskserver.webp"));
-        shops.add(getShop("SereverGate", "Восстановленное IT оборудование", path + "servergate.png"));
-        shops.add(getShop("iBatt", "Аккумуляторные батареи для ноутбуков, блоки питания для ноутбуков", path + "ibatt.png"));
-        shops.add(getShop("FotoCCCP", "Фототехника и оптика. Переходники, адаптеры и аксессуары для фото", path + "fotocccp.png"));
-        shops.add(getShop("RedKey", "Сеть салонов Hi-Fi техники", path + "redkey.png"));
+        shops.add(getShop("M-Group", "Мебель для дома и сада", path + "mgroup.jpg"));
+        shops.add(getShop("Vesco", "Элитная загородная, городская и коммерческая недвижимость", path + "vesco.jpg"));
+        shops.add(getShop("BigTV", "Проверенная временем цифровые устройства", path + "bigtv.jpg"));
+        shops.add(getShop("MskServer", "Постройте свой бизнес без переплат", path + "mskserver.jpg"));
+        shops.add(getShop("SereverGate", "Восстановленное IT оборудование", path + "servergate.jpg"));
+        shops.add(getShop("iBatt", "Аккумуляторные батареи для ноутбуков, блоки питания для ноутбуков", path + "ibatt.jpg"));
+        shops.add(getShop("FotoCCCP", "Фототехника и оптика. Переходники, адаптеры и аксессуары для фото", path + "fotocccp.jpg"));
+        shops.add(getShop("RedKey", "Сеть салонов Hi-Fi техники", path + "redkey.jpg"));
 
         return shops;
     }

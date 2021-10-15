@@ -1,11 +1,16 @@
 package com.amr.project.model.dto;
 
+import lombok.*;
 import org.mapstruct.Mapper;
 
 import java.math.BigDecimal;
 import java.util.List;
 
-
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 public class ItemDto {
     private Long id;
     private String name;
