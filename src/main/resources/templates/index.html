@@ -55,7 +55,7 @@
           <div class="d-flex justify-content-center"><img th:src="${item.getImages().get(0).toBase64()}" class="card-img-top" alt="..."></div>
           <div class="card-body">
             <h5 class="card-title" th:text="${item.getName()}">NAME</h5>
-            <p class="font-weight-bold">Цена: <span class="text-danger" th:text="${item.getPrice()}">PRICE</span></p>
+            <p class="font-weight-bold">Цена: <span class="text-danger" th:text="${item.getPrice().intValue()}">PRICE</span></p>
             <p class="card-text" th:text="${item.getDescription().substring(0, 50) + '...'}">DESCRIPTION</p>
             <a th:href="@{'cart/' + ${item.getId()}}" class="btn btn-primary btn-sm">В корзину</a>
           </div>
