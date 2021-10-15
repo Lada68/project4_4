@@ -22,15 +22,11 @@ public class Image {
 
     public Image(String url) {
         this.url = url;
-        setPicture(url);
+        this.picture = ImgUtil.toByteArr(url);
     }
 
     public Image() {
 
-    }
-
-    public void setPicture(String url) {
-        this.picture = ImgUtil.toByteArray(url);
     }
 
 }

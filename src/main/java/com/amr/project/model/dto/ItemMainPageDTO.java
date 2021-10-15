@@ -3,6 +3,7 @@ package com.amr.project.model.dto;
 import lombok.*;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -12,6 +13,6 @@ public class ItemMainPageDTO {
     private String name;
     private BigDecimal price;
     private String description;
-    private ImageMainPageDto logo;
+    private List<ImageDto> images;
 
 }

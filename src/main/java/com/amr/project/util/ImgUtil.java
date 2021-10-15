@@ -4,9 +4,15 @@ import java.util.Base64;
 
 import java.io.*;
 
-public class ImgUtil {
+public final class ImgUtil {
 
-    public static byte[] toByteArray(String url) {
+    /**
+     * Convert a file to a byte array
+     * @param url a picture file path, for example "src/static/img/name.jpg"
+     * @return a byte array
+     */
+    public static byte[] toByteArr(String url) {
+        
         try(BufferedInputStream bufferedInputStream = new BufferedInputStream(new FileInputStream(url));
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream()) {
 
@@ -21,6 +27,18 @@ public class ImgUtil {
         }
 
         return new byte[0];
+    }
+
+    /**
+     * Build a picture of base64 string format
+     * @param url a picture file path, for example "src/static/img/name.jpg"
+     * @param picture a byte array
+     * @return a base64 format picture
+     */
+    public static String toBase64img(String url, byte[] picture) {
+        return new StringBuilder("data:image/")
+                .append(url.substring(url.lastIndexOf(".") + 1)).append(";base64,")
+                .append(Base64.getEncoder().encodeToString(picture)).toString();
     }
 
 }
