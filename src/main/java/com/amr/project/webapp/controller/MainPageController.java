@@ -1,6 +1,7 @@
 package com.amr.project.webapp.controller;
 
 
+import com.amr.project.model.entity.User;
 import com.amr.project.service.abstracts.ShowMainPageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,4 +23,5 @@ public class MainPageController {
         model.addAttribute("mainPageDto", showMainPageService.show());
         return "index";
     }
+
 }

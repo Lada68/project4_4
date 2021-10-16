@@ -1,5 +1,6 @@
 package com.amr.project.service.impl;
 
+import com.amr.project.service.abstracts.UserService;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
